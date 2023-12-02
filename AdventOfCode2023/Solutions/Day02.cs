@@ -11,6 +11,14 @@ public static class Day02
         var validGameIds = lines.Select(line => ParseGame(line, redCubes, greenCubes, blueCubes)).Where(id =>  id > -1).ToList();
         return validGameIds.Aggregate(0, (i1, i2) => i1 + i2);
     }
+    
+    public static int SolveMinimum(string input)
+    {
+        var lines = input.Split(Environment.NewLine);
+
+        var games = lines.Select(line => new Game(line)).ToList();
+        return games.Aggregate(0, (total, game) => total + game.MinimumValue());
+    }
 
     private static int ParseGame(string gameLine, int redCubes, int greenCubes, int blueCubes)
     {
@@ -27,6 +35,11 @@ public static class Day02
             Blue = ParseCubes(gameLine, "blue");
             Green = ParseCubes(gameLine, "green");
             Red = ParseCubes(gameLine, "red");
+        }
+
+        public int MinimumValue()
+        {
+            return Blue.Max() * Red.Max() * Green.Max();
         }
 
         public bool IsValid(int blueCubes, int greenCubes, int redCubes)

@@ -21,4 +21,20 @@ public class Day02Tests
         var result = Day02.Solve(Day02Inputs.Real, 12, 13, 14);
         result.Should().Be(expected);
     }
+    
+    [Fact]
+    public void Example_02_Should_Be_2286()
+    {
+        var expected = 2286;
+        var result = Day02.SolveMinimum(Day02Inputs.Example02);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Real_02_Should_Be_66909()
+    {
+        var expected = 66909;
+        var result = Day02.SolveMinimum(Day02Inputs.Real);
+        result.Should().Be(expected);
+    }
 }
