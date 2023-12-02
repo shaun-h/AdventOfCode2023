@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4af2ea97_002D4323_002D45c3_002Da4a7_002D5341636630e1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Example_01_Should_Be_142" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::433EB44A-62C8-4909-9A61-EF525F71DED8::net8.0::AdventOfCode2023Tests.Solutions.Day01Tests.Example_01_Should_Be_142&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::433EB44A-62C8-4909-9A61-EF525F71DED8::net8.0::AdventOfCode2023Tests.Solutions.Day01Tests.Real_01_Should_Be_55002&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::433EB44A-62C8-4909-9A61-EF525F71DED8::net8.0::AdventOfCode2023Tests.Solutions.Day01Tests.Example_02_Should_Be_281&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
