@@ -1,6 +1,6 @@
 namespace AdventOfCode2023.Solutions;
 
-public class Day01
+public static class Day01
 {
     public static int Solve(string input, bool parseWords)
     {
