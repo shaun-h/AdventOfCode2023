@@ -7,118 +7,52 @@ public static class Day03
     public static int Solve(string input)
     {
         var lines = input.Split(Environment.NewLine);
-
-        var possibleParts = new List<PossiblePart>();
+        var numbers = GetSchemaNumbers(lines);
+        var partNumbers = new List<ScehmaNumber>();
         for (var y = 0; y < lines.Length; y++)
         {
             var line = lines[y];
-            var aboveLine = y > 0 ? lines[y - 1] : null;
-            var belowLine = y + 1 < lines.Length ? lines[y + 1] : null;
-            var currentNumber = "";
-            var isPart = false;
             for (var x = 0; x < line.Length; x++)
             {
-                if (char.IsDigit(line[x]))
+                if (char.IsDigit(line[x]) || line[x] == '.') continue;
+                var adNums = AjacentTo(x, y, numbers);
+                foreach (var num in adNums.Where(num => !partNumbers.Contains(num)))
                 {
-                    currentNumber += line[x];
-                    //Left
-                    if (x - 1 >= 0)
-                    {
-                        
-                        if (IsSymbol(line, x - 1))
-                        {
-                            isPart = true;
-                        }
-
-                        //TopLeft
-                        if (aboveLine != null)
-                        {
-                            if (IsSymbol(aboveLine, x - 1))
-                            {
-                                isPart = true;
-                            }
-                        }
-                        //BottomLeft
-                        if (belowLine != null)
-                        {
-                            if (IsSymbol(belowLine, x - 1))
-                            {
-                                isPart = true;
-                            }
-                        }
-                    }
-                    
-                    //Above
-                    if (aboveLine != null)
-                    {
-                        if (IsSymbol(aboveLine, x))
-                        {
-                            isPart = true;
-                        }
-                    }
-                    
-                    //Below
-                    if (belowLine != null)
-                    {
-                        if (IsSymbol(belowLine, x))
-                        {
-                            isPart = true;
-                        }
-                    }
-                    
-                    //Right
-                    if (x + 1 < line.Length)
-                    {
-                        if (IsSymbol(line, x + 1))
-                        {
-                            isPart = true;
-                        }
-
-                        //TopRight
-                        if (aboveLine != null)
-                        {
-                            if (IsSymbol(aboveLine, x + 1))
-                            {
-                                isPart = true;
-                            }
-                        }
-                        //BottomRight
-                        if (belowLine != null)
-                        {
-                            if (IsSymbol(belowLine, x + 1))
-                            {
-                                isPart = true;
-                            }
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
+                    partNumbers.Add(num);
                 }
-                else if(currentNumber != "")
-                {
-                    possibleParts.Add(new PossiblePart(int.Parse(currentNumber), isPart));
-                    currentNumber = "";
-                    isPart = false;
-                }
-            }
-
-            if (currentNumber != "")
-            {
-                possibleParts.Add(new PossiblePart(int.Parse(currentNumber), isPart));
             }
         }
 
-        return possibleParts.Aggregate(0, (i, i2) => i + (i2.IsPart ? i2.Number : 0));
+        return partNumbers.Aggregate(0, (i, sn) => i + sn.Number);
     }
     
     public static int SolveGear(string input)
     {
         var lines = input.Split(Environment.NewLine);
         var number = 0;
+        var numbers = GetSchemaNumbers(lines);
+
+        for (var y = 0; y < lines.Length; y++)
+        {
+            var line = lines[y];
+            for (var x = 0; x < line.Length; x++)
+            {
+                if (line[x] == '*')
+                {
+                    var adNums = AjacentTo(x, y, numbers);
+                    if (adNums.Count == 2)
+                    {
+                        var gearRatio = adNums.Aggregate(1, (i1, g) => i1 * g.Number);
+                        number += gearRatio;
+                    }
+                }
+            }
+        }
+        return number;
+    }
+
+    private static List<ScehmaNumber> GetSchemaNumbers(string[] lines)
+    {
         var numbers = new List<ScehmaNumber>();
         for (var y = 0; y < lines.Length; y++)
         {
@@ -143,24 +77,7 @@ public static class Day03
             }
         }
 
-        for (var y = 0; y < lines.Length; y++)
-        {
-            var line = lines[y];
-            for (var x = 0; x < line.Length; x++)
-            {
-                if (line[x] == '*')
-                {
-                    var adNums = AjacentTo(x, y, numbers);
-                    if (adNums.Count == 2)
-                    {
-                        var gearRatio = adNums.Aggregate(1, (i1, g) => i1 * g.Number);
-                        number += gearRatio;
-                    }
-                }
-            }
-        }
-        return number;
-        //return numbers.Aggregate(0, (i, i2) => i + (i2.IsPart ? i2.Number : 0));
+        return numbers;
     }
 
     private static List<ScehmaNumber> AjacentTo(int x, int y, List<ScehmaNumber> numbers)
@@ -184,21 +101,6 @@ public static class Day03
         
         return adNum;
     }
-    private static bool IsSymbol(string line, int position)
-    {
-        var c = line[position];
-
-        if (c == '.') return false;
-        if (char.IsNumber(c)) return false;
-
-        char[] symbols = ['*', '#', '+', '$', '%', '@', '/', '=', '-', '&'];
-
-        if (symbols.Contains(c)) return true;
-            
-        return false;
-    }
 }
 
-public record PossiblePart(int Number, bool IsPart);
 public record ScehmaNumber(int Number, int x1, int x2, int y);
-public record Part(int Number);
