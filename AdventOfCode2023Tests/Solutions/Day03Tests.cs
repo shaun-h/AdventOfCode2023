@@ -22,4 +22,19 @@ public class Day03Tests
         result.Should().Be(expected);
     }
     
+    [Fact]
+    public void Example_02_Should_Be_467835()
+    {
+        var expected = 467835;
+        var result = Day03.SolveGear(Day03Inputs.Example02);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Real_02_Should_Be_82818007()
+    {
+        var expected = 82818007;
+        var result = Day03.SolveGear(Day03Inputs.Real);
+        result.Should().Be(expected);
+    }
 }
