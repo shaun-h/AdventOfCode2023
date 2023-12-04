@@ -21,4 +21,20 @@ public class Day04Tests
         var result = Day04.Solve(Day04Inputs.Real);
         result.Should().Be(expected);
     }
+    
+    [Fact]
+    public void Example_02_Should_Be_30()
+    {
+        var expected = 30;
+        var result = Day04.SolveTotal(Day04Inputs.Example02);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Real_02_Should_Be_5037841()
+    {
+        var expected = 5037841;
+        var result = Day04.SolveTotal(Day04Inputs.Real);
+        result.Should().Be(expected);
+    }
 }
