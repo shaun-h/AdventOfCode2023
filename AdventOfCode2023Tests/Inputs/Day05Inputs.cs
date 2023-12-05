@@ -36,8 +36,39 @@ humidity-to-location map:
 60 56 37
 56 93 4";
 
-    public static string Example02 = @"";
+    public static string Example02 = @"seeds: 79 14 55 13
 
+seed-to-soil map:
+50 98 2
+52 50 48
+
+soil-to-fertilizer map:
+0 15 37
+37 52 2
+39 0 15
+
+fertilizer-to-water map:
+49 53 8
+0 11 42
+42 0 7
+57 7 4
+
+water-to-light map:
+88 18 7
+18 25 70
+
+light-to-temperature map:
+45 77 23
+81 45 19
+68 64 13
+
+temperature-to-humidity map:
+0 69 1
+1 0 69
+
+humidity-to-location map:
+60 56 37
+56 93 4";
     public static string Real = @"seeds: 487758422 524336848 2531594804 27107767 1343486056 124327551 1117929819 93097070 3305050822 442320425 2324984130 87604424 4216329536 45038934 1482842780 224610898 115202033 371332058 2845474954 192579859
 
 seed-to-soil map:
