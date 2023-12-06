@@ -18,7 +18,23 @@ public class Day06Tests
     public void Real_01_Should_Be_160816()
     {
         var expected = 160816;
-        var result = Day06.Solve(Day06Inputs.Real);
+        var result = Day06.Solve(Day06Inputs.Real01);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Example_02_Should_Be_71503()
+    {
+        var expected = 71503;
+        var result = Day06.Solve(Day06Inputs.Example02);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Real_02_Should_Be_46561107()
+    {
+        var expected = 46561107;
+        var result = Day06.Solve(Day06Inputs.Real02);
         result.Should().Be(expected);
     }
 }

@@ -11,7 +11,7 @@ public static class Day06
         var times = ParseLine(lines.Single(l => l.StartsWith("Time:", StringComparison.InvariantCultureIgnoreCase)));
         var distances = ParseLine(lines.Single(l => l.StartsWith("Distance:", StringComparison.InvariantCultureIgnoreCase)));
 
-        var availableOptions = new List<int>();
+        var availableOptions = new List<long>();
         for (var i = 0; i < times.Count; i++)
         {
             var time = times.ElementAt(i);
@@ -19,10 +19,10 @@ public static class Day06
 
             availableOptions.Add(CalculateOptions(time, distance));
         }
-        return availableOptions.Aggregate(1, (current, options) => current * options);
+        return availableOptions.Aggregate(1l, (current, options) => current * options);
     }
 
-    private static int CalculateOptions(int time, int distance)
+    private static long CalculateOptions(long time, long distance)
     {
         var availableOptions = 0;
         for (var t = time; t > 0; t--)
@@ -33,8 +33,8 @@ public static class Day06
         return availableOptions;
     }
 
-    private static List<int> ParseLine(string line)
+    private static List<long> ParseLine(string line)
     {
-        return line.Split(" ").Where(x => int.TryParse(x, out var i)).Select(int.Parse).ToList();
+        return line.Split(" ").Where(x => long.TryParse(x, out var i)).Select(long.Parse).ToList();
     }
 }
