@@ -7,6 +7,12 @@ T55J5 684
 KK677 28
 KTJJT 220
 QQQJA 483";
+    
+    public static string Example02 = @"32T3K 765
+T55J5 684
+KK677 28
+KTJJT 220
+QQQJA 483";
 
     public static string Real = @"467K3 95
 JK5QK 838
