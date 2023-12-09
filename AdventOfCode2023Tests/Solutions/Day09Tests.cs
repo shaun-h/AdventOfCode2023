@@ -10,7 +10,15 @@ public class Day09Tests
     public void Example_01_Should_Be_114()
     {
         var expected = 114;
-        var result = Day09.Solve(Day09Inputs.Example01);
+        var result = Day09.Solve(Day09Inputs.Example01, true);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Example_02_Should_Be_2()
+    {
+        var expected = 2;
+        var result = Day09.Solve(Day09Inputs.Example01, false);
         result.Should().Be(expected);
     }
     
@@ -18,7 +26,15 @@ public class Day09Tests
     public void Real_01_Should_Be_1762065988()
     {
         var expected = 1762065988;
-        var result = Day09.Solve(Day09Inputs.Real);
+        var result = Day09.Solve(Day09Inputs.Real, true);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Real_02_Should_Be_1066()
+    {
+        var expected = 1066;
+        var result = Day09.Solve(Day09Inputs.Real, false);
         result.Should().Be(expected);
     }
 }
